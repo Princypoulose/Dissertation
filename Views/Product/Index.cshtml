@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MyEcommerceBook.Models.Product>
+@{
+    ViewBag.Title = "Product Information";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">Product List</h2>
+        <hr />
+        <div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("Create", "Product")" class="button">Add</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(p => p.Name)</th>
+                    
+                        @*<th>@Html.DisplayNameFor(p => p.SubCategoryID)</th>*@
+                        <th>@Html.DisplayNameFor(p => p.UnitPrice)</th>
+                        <th>@Html.DisplayNameFor(p => p.UnitInStock)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.Name)</td>                        
+                            <td>@Html.DisplayFor(p => pdt.UnitPrice)</td>
+                            <td>@Html.DisplayFor(p => pdt.UnitInStock)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Product", new {id = pdt.ProductId })" class="button">Edit</a>
+                                <a href="@Url.Action("Details", "Product", new {id = pdt.ProductId })" class="button">Details</a>
+                                <a href="@Url.Action("Delete", "Product", new {id = pdt.ProductId })" class="button">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

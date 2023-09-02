@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyEcommerceBook.Models.SubCategory>
+@{
+    ViewBag.Title = "SubCategory Information";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">Category List</h2>
+        <hr />
+        <div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("Create", "SubCategory")" class="button">Add</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(p => p.Name)</th>                                                                  
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.Name)</td>                                                    
+                            @*<td>@Html.DisplayFor(p => pdt.SubCategory.Name)</td>*@
+                       
+                            <td>
+                                <a href="@Url.Action("Edit", "SubCategory", new {id = pdt.SubCategoryId })" class="button">Edit</a>
+                                <a href="@Url.Action("Details", "SubCategory", new {id = pdt.SubCategoryId })" class="button">Details</a>
+                                <a href="@Url.Action("Delete", "SubCategory", new {id = pdt.SubCategoryId })" class="button">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

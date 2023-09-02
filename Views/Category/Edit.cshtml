@@ -1,0 +1,40 @@
+﻿@model MyEcommerceBook.Models.CategoryVM
+@{
+    ViewBag.Title = "Edit Category Details";
+}
+
+<div class="row">
+    <div class="col">      
+        <div class="col-md-12">
+            @using (Html.BeginForm("Edit", "Category", FormMethod.Post))
+            {
+                @Html.HiddenFor(x => x.CategoryId)
+                //@Html.HiddenFor(x => x.PicturePath)
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        @Html.LabelFor(x => x.Name, new { @class = "form-label fs-4" })
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+                
+                    
+                  
+                    @*<div class="col-md-6">
+                        @Html.LabelFor(x => x.Picture, new { @class = "form-label fs-4" })
+                        @Html.TextBoxFor(x => x.Picture, new { @class = "form-control fs-4", Type = "file" })
+                        @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+                    </div>*@
+
+                    <div class="col-md-6 mt-4">
+                        <button type="submit" class="btn btn-success btn-lg col-12 mt-4"><i class="fa-solid fa-up fs-4"></i> Update</button>
+                    </div>
+                </div>
+            }
+
+            <div class="col-md-12 d-flex justify-content-lg-start mt-2">
+                <a href="@Url.Action("Index", "Category")" class="btn btn-danger btn-sm fs-4"><i class="fa-regular fa-hand-back-point-left"></i> Back to the list</a>
+            </div>
+        </div>
+    </div>
+</div>
+
